@@ -43,7 +43,14 @@ class AutomigrateCommand extends Command {
 	{
 		$commands = $this->commandGenerator->generateCommands();
 
-		$this->call('migrate:reset');
+		/**
+		* If --reset is passed we first reset migrations
+		*/
+		if ($this->input->getOption('reset'))
+		{
+			$this->call('migrate:reset');
+		}
+
 		foreach ($commands as $command)
 		{
 			$this->call('migrate', $command);
@@ -76,6 +83,7 @@ class AutomigrateCommand extends Command {
 	protected function getOptions()
 	{
 		return array(
+			array('reset', null, InputOption::VALUE_NONE, 'Indicates if current migrations should be reset first.'),
 			array('seed', null, InputOption::VALUE_NONE, 'Indicates if the seed task should be run after migrations.'),
 		);
 	}

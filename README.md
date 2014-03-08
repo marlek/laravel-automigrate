@@ -69,8 +69,27 @@ Finally, the only thing left to do is run the command to migrate your database
     php artisan automigrate
 
 
+### Reset previous migrations
+
+If you want to reset previous migrations before running migrate again, just
+pass the `reset` option
+
+
+    php artisan automigrate --reset
+
+
+### Seed the database
+
 Just like `migrate` command, this command accepts `seed` option, in case you want
 to seed your database after the migrations
 
 
     php artisan automigrate --seed
+
+---
+
+Reset and seed can be combined into a command which will reset your migrations,
+run all migrations again and after that seed the database
+
+
+    php artisan automigrate --seed --reset
