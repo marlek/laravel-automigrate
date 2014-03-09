@@ -3,8 +3,6 @@
 laravel-automigrate package allows you to define a sequence of migrations for
 your vendor and workbench packages and run them with one command.
 
-> Please note that this is still alpha version of the package, so check for updates regularly.
-
 
 ## Installing
 
@@ -93,3 +91,6 @@ run all migrations again and after that seed the database
 
 
     php artisan automigrate --seed --reset
+
+
+Regular `migrate` command will be run after all package migrations
