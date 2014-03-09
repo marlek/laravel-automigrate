@@ -56,6 +56,8 @@ class AutomigrateCommand extends Command {
 			$this->call('migrate', $command);
 		}
 
+		$this->call('migrate');
+
 		/**
 		 * If --seed is passed we run the seed command
 		 */
