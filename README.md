@@ -51,9 +51,9 @@ file and pass `packages` array like this:
     <?php
         return array(
             'packages' => array(
-                'package' => 'marlek/example-vendor-package',
-                'package' => 'marlek/example-package',
-                'bench'   => 'marlek/another-example'
+                array('package', 'marlek/some-package'),
+                array('package', 'marlek/example-package'),
+                array('bench', 'marlek/another-example'),
             )
         );
 
