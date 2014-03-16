@@ -1,5 +1,7 @@
 # Laravel Automigrate
 
+[![Build Status](https://travis-ci.org/marlek/laravel-automigrate.png?branch=master)](https://travis-ci.org/marlek/laravel-automigrate)
+
 laravel-automigrate package allows you to define a sequence of migrations for
 your vendor and workbench packages and run them with one command.
 
