@@ -13,7 +13,7 @@ class CommandGenerator
 		$this->config = $config;
 	}
 
-	private function validateConfig()
+	public function validateConfig()
 	{
 		if (!(isset($this->config['packages']) && is_array($this->config['packages'])))
 		{
@@ -21,7 +21,7 @@ class CommandGenerator
 		}
 	}
 
-	private function parsePackages()
+	public function parsePackages()
 	{
 		$this->validateConfig();
 		$packages = $this->config['packages'];
@@ -29,22 +29,42 @@ class CommandGenerator
 		$responseCommands = array();
 		foreach ($packages as $package)
 		{
-			if (!(is_array($package) && isset($package[0]) && isset($package[1]) && ($package[0] === 'package' || $package[0] === 'bench')))
-			{
-				throw new WrongParametersException('Wrong parameters passed to packages array in configuration');
-			}
-
-			if ($package[0] === 'package')
-			{
-				$responseCommands[] = array('--package' => $package[1]);
-			}
-			else
-			{
-				$responseCommands[] = array('--bench' => $package[1]);
-			}
+			$responseCommands[] = $this->parsePackage($package);
 		}
-		
+
 		return $responseCommands;
+	}
+
+	public function parsePackage($package)
+	{
+		if (!$this->checkParameters($package))
+		{
+			throw new WrongParametersException('Wrong parameters passed to packages array in configuration');
+		}
+
+		if ($package[0] === 'package')
+		{
+			return array('--package' => $package[1]);
+		}
+		else
+		{
+			return array('--bench' => $package[1]);
+		}
+	}
+
+	public function checkParameters($package)
+	{
+		if (!(is_array($package) && isset($package[0]) && isset($package[1])))
+		{
+			return false;
+		}
+
+		if (!($package[0] === 'package' || $package[0] === 'bench'))
+		{
+			return false;
+		}
+
+		return true;
 	}
 
 	function generateCommands()

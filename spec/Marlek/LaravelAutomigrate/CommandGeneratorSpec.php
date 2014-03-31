@@ -16,26 +16,22 @@ class CommandGeneratorSpec extends ObjectBehavior
     {
         $config = array();
         $this->shouldThrow('Marlek\LaravelAutomigrate\Exceptions\InvalidConfigException')
-            ->duringGenerateCommands($config);
+            ->duringValidateConfig();
     }
 
     function it_should_not_allow_non_array_packages_config()
     {
         $config = 'Testing config';
+        $this->setConfig($config);
         $this->shouldThrow('Marlek\LaravelAutomigrate\Exceptions\InvalidConfigException')
-            ->duringGenerateCommands($config);
+            ->duringValidateConfig();
     }
 
     function it_should_not_allow_wrong_options_in_config()
     {
-        $config = array(
-            'packages' => array(
-                array('testing', 'Marlek\LaravelAutomigrate')
-            )
-        );
-        $this->setConfig($config);
+        $package = array('testing', 'Marlek\LaravelAutomigrate');
         $this->shouldThrow('Marlek\LaravelAutomigrate\Exceptions\WrongParametersException')
-            ->duringGenerateCommands();
+            ->duringParsePackage($package);
     }
 
     function it_should_generate_valid_commands()
