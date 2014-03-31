@@ -39,12 +39,14 @@ class CommandGeneratorSpec extends ObjectBehavior
         $config = array(
             'packages' => array(
                 array('package', 'marlek/laravel-automigrate'),
-                array('bench', 'marlek/testing')
+                array('bench', 'marlek/testing'),
+                array('path', 'app/database/migrations_two')
             )
         );
         $responseArray = array(
             array('--package' => 'marlek/laravel-automigrate'),
-            array('--bench' => 'marlek/testing')
+            array('--bench' => 'marlek/testing'),
+            array('--path' => 'app/database/migrations_two')
         );
 
         $this->setConfig($config);

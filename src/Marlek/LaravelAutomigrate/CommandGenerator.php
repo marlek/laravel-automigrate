@@ -42,14 +42,20 @@ class CommandGenerator
 			throw new WrongParametersException('Wrong parameters passed to packages array in configuration');
 		}
 
-		if ($package[0] === 'package')
-		{
-			return array('--package' => $package[1]);
+		$command = '';
+		switch ($package[0]) {
+			case 'package':
+				$command = array('--package' => $package[1]);
+				break;
+			case 'path':
+				$command = array('--path' => $package[1]);
+				break;
+			default:
+				$command = array('--bench' => $package[1]);
+				break;
 		}
-		else
-		{
-			return array('--bench' => $package[1]);
-		}
+
+		return $command;
 	}
 
 	public function checkParameters($package)
@@ -59,7 +65,7 @@ class CommandGenerator
 			return false;
 		}
 
-		if (!($package[0] === 'package' || $package[0] === 'bench'))
+		if (!($package[0] === 'package' || $package[0] === 'bench' || $package[0] === 'path'))
 		{
 			return false;
 		}
