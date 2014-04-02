@@ -13,7 +13,7 @@ root of your Laravel application.
 
 
     "require-dev": {
-        "marlek/laravel-automigrate": "1.0.*"
+        "marlek/laravel-automigrate": "1.1.*"
     }
 
 
