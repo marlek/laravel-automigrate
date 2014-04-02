@@ -56,12 +56,14 @@ file and pass `packages` array like this:
                 array('package', 'marlek/some-package'),
                 array('package', 'marlek/example-package'),
                 array('bench', 'marlek/another-example'),
+                array('path', 'path/to/migrations_folder'),
             )
         );
 
 
-`package` key means that your package is in vendor directory (third-party package)
-and `bench` key means it's a package in you workbench directory.
+`package` key means that your package is in vendor directory (third-party package),
+`bench` key means it's a package in you workbench directory,
+and a `path` key means it's a directory containing your migrations.
 
 Finally, the only thing left to do is run the command to migrate your database
 
