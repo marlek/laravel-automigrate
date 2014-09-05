@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "illuminate/support": "4.1.*"
+        "illuminate/support": "4.*"
     },
     "require-dev": {
         "phpspec/phpspec": "2.0.*@dev"
