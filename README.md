@@ -8,22 +8,13 @@ your vendor and workbench packages and run them with one command.
 
 ## Installing
 
-Add the package to the list of required packages in composer.json file in the
-root of your Laravel application.
+Require the package with composer:
 
 
-    "require-dev": {
-        "marlek/laravel-automigrate": "1.2.*"
-    }
+    composer require marlek/laravel-automigrate
 
 
-Then update Composer from the Terminal:
-
-
-    composer update --dev
-
-
-When the update completes, open your `app/config/app.php` file and add this item
+When the installation completes, open your `app/config/app.php` file and add this item
 to the array of providers:
 
 
