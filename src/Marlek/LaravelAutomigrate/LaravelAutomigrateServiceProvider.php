@@ -21,7 +21,9 @@ class LaravelAutomigrateServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('marlek/laravel-automigrate');
+		$this->publishes([
+            __DIR__.'/../../config/config.php' => config_path('laravel-automigrate.php')
+        ]);
 	}
 
 	/**
@@ -33,7 +35,7 @@ class LaravelAutomigrateServiceProvider extends ServiceProvider {
 	{
 		$this->app['automigrate'] = $this->app->share(function($app)
         {
-        	$config = $app['config']->get('laravel-automigrate::config');
+        	$config = $app['config']->get('laravel-automigrate');
         	$commandGenerator = new CommandGenerator();
         	$commandGenerator->setConfig($config);
             return new AutomigrateCommand($commandGenerator);
