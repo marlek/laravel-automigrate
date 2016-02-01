@@ -34,27 +34,20 @@ You need to define the list of migrations you want to run in the configuration
 of the package. To do this, you first need to publish the configuration:
 
 
-    php artisan config:publish marlek/laravel-automigrate
+    php artisan vendor:publish
 
 
-Then you need to open `app/config/packages/marlek/laravel-automigrate/config.php`
-file and pass `packages` array like this:
+Then you need to open `app/config/laravel-automigrate.php`
+file and pass `paths` array like this:
 
 
     <?php
-        return array(
-            'packages' => array(
-                array('package', 'marlek/some-package'),
-                array('package', 'marlek/example-package'),
-                array('bench', 'marlek/another-example'),
-                array('path', 'path/to/migrations_folder'),
-            )
-        );
-
-
-`package` key means that your package is in vendor directory (third-party package),
-`bench` key means it's a package in you workbench directory,
-and a `path` key means it's a directory containing your migrations.
+        return [
+            'paths' => [
+                'path/to/migrations_folder_one',
+                'path/to/migrations_folder_two'
+            ]
+        ];
 
 Finally, the only thing left to do is run the command to migrate your database
 
