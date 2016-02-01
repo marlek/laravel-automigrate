@@ -1,6 +1,6 @@
 {
     "name": "marlek/laravel-automigrate",
-    "description": "Laravel package which allows defining a sequence of migrations for your vendor and workbench packages and running them with one command",
+    "description": "Laravel package which allows automatically running migrations from different folders, useful when you have custom folder structure",
     "keywords": ["laravel", "migrations"],
     "license": "MIT",
     "authors": [

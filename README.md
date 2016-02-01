@@ -2,8 +2,7 @@
 
 [![Build Status](https://travis-ci.org/marlek/laravel-automigrate.png?branch=master)](https://travis-ci.org/marlek/laravel-automigrate)
 
-laravel-automigrate package allows you to define a sequence of migrations for
-your vendor and workbench packages and run them with one command.
+Laravel package which allows automatically running migrations from different folders, useful when you have custom folder structure
 
 
 ## Installing
