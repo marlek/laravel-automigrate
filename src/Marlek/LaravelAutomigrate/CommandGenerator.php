@@ -15,50 +15,13 @@ class CommandGenerator
 
 	public function validateConfig()
 	{
-		if (!(isset($this->config['packages']) && is_array($this->config['packages'])))
+		if (!(isset($this->config['paths']) && is_array($this->config['paths'])))
 		{
-			throw new InvalidConfigException('Packages in configuration need to be passed as an array');
+			throw new InvalidConfigException('Pahts need to be passed as an array in configuration');
 		}
 	}
 
-	public function parsePackages()
-	{
-		$this->validateConfig();
-		$packages = $this->config['packages'];
-
-		$responseCommands = array();
-		foreach ($packages as $package)
-		{
-			$responseCommands[] = $this->parsePackage($package);
-		}
-
-		return $responseCommands;
-	}
-
-	public function parsePackage($package)
-	{
-		if (!$this->checkParameters($package))
-		{
-			throw new WrongParametersException('Wrong parameters passed to packages array in configuration');
-		}
-
-		$command = '';
-		switch ($package[0]) {
-			case 'package':
-				$command = array('--package' => $package[1]);
-				break;
-			case 'path':
-				$command = array('--path' => $package[1]);
-				break;
-			default:
-				$command = array('--bench' => $package[1]);
-				break;
-		}
-
-		return $command;
-	}
-
-	public function checkParameters($package)
+    public function checkParameters($package)
 	{
 		if (!(is_array($package) && isset($package[0]) && isset($package[1])))
 		{
@@ -73,9 +36,18 @@ class CommandGenerator
 		return true;
 	}
 
-	function generateCommands()
-	{
-		return $this->parsePackages();
-	}
+    function generateCommands()
+    {
+        $this->validateConfig();
+        $paths = $this->config['paths'];
+
+        $responseCommands = [];
+        foreach ($paths as $path)
+        {
+            $responseCommands[] = ['--path' => $path];
+        }
+
+        return $responseCommands;
+    }
 
 }
