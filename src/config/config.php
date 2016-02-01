@@ -4,7 +4,7 @@
 
 		/**
 		* Automigrate requires a list of paths to run. This list is an
-		* array paths to run migrations for
+		* array of paths to run migrations for
 		*/
 
 		/*
