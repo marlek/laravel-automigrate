@@ -82,3 +82,9 @@ run all migrations again and after that seed the database
 
 
 Regular `migrate` command will be run after all package migrations
+
+### Older versions of Laravel
+
+If you're using Laravel 4.* you should use the package version 1.2:
+
+    composer require marlek/laravel-automigrate:1.2
