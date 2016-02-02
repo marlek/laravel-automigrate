@@ -27,7 +27,7 @@ Finally you can run `artisan` command in the root of you application and see
     php artisan
 
 
-## Using
+## Using in Laravel
 
 You need to define the list of migrations you want to run in the configuration
 of the package. To do this, you first need to publish the configuration:
@@ -49,6 +49,30 @@ file and pass `paths` array like this:
         ];
 
 Finally, the only thing left to do is run the command to migrate your database
+
+
+    php artisan automigrate
+
+
+## Using in Lumen
+
+Since Lumen doesn't have `vendor:publish` command, you'll need to add package configuration yourself.
+
+I recommend adding it in `bootstrap/app.php` like this:
+
+
+
+    config(
+        [
+            'laravel-automigrate.paths' => [
+                'path/to/migrations_folder_one',
+                'path/to/migrations_folder_two'
+            ]
+        ]
+    );
+
+
+After this, just like in Laravel, you need to run the command to migrate your database
 
 
     php artisan automigrate
