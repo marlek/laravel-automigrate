@@ -21,21 +21,6 @@ class CommandGenerator
 		}
 	}
 
-    public function checkParameters($package)
-	{
-		if (!(is_array($package) && isset($package[0]) && isset($package[1])))
-		{
-			return false;
-		}
-
-		if (!($package[0] === 'package' || $package[0] === 'bench' || $package[0] === 'path'))
-		{
-			return false;
-		}
-
-		return true;
-	}
-
     function generateCommands()
     {
         $this->validateConfig();
