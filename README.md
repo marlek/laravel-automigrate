@@ -4,6 +4,11 @@
 
 Laravel package which allows automatically running migrations from different folders, useful when you have custom folder structure
 
+```
+NOTE: This package is not necessary with Laravel/Lumen version 5.3 and above, as it supports custom directories for migrations. 
+Look up loadMigrationsFrom() function in the documentation.
+```
+
 
 ## Installing
 
